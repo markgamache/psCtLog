@@ -6,8 +6,17 @@ function get-TenLogs([object] $logBase, [long] $ind, [int] $qty = 10, [System.Co
 
     try
     {
+        $stopwatchSW = [System.Diagnostics.Stopwatch]::new()
+        $stopwatchSW.Start()
         $fullURL = "$($getEntURL)?start=$($ind)&end=$($ind + $qty - 1 )"
         $oLog = Invoke-WebRequest $fullURL  -UseBasicParsing 
+
+        $stopwatchSW.Stop()
+
+        if($stopwatchSW.ElapsedMilliseconds -gt 2000)
+        {
+            Write-Warning "$($logBase.url) is slow. $($stopwatchSW.ElapsedMilliseconds) ms to get $($qty)"
+        }
     }
     Catch
     {
