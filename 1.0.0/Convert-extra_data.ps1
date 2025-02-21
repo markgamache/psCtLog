@@ -1,4 +1,4 @@
-function Decode-extra_data($leaf, [bool] $fullCert)
+function Convert-extra_data($leaf, [bool] $fullCert)
 {
     $certchain = [System.Convert]::FromBase64String($leaf.extra_data)
 

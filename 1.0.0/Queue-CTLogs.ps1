@@ -8,7 +8,7 @@ function Queue-CTLogs([object] $logBase, [string[]] $domainLIst, [System.Collect
 
         foreach($lg in $thisTen)
         {
-            $cc = Decode-extra_data -leaf $lg -fullCert $false
+            $cc = Convert-extra_data -leaf $lg -fullCert $false
 
             if($cc.bIsCa -eq $false)
             {
@@ -73,7 +73,7 @@ function Queue-CTLogs([object] $logBase, [string[]] $domainLIst, [System.Collect
             continue
             
             $uped = $false
-            $cc = Decode-extra_data -leaf $lg
+            $cc = Convert-extra_data -leaf $lg
 
 
             foreach($san in $cc.DnsNameList.Unicode)

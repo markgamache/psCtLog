@@ -12,7 +12,7 @@ function Parse-Log([object] $logBase, [string[]] $domainLIst)
 
             
             $uped = $false
-            $cc = Decode-extra_data -leaf $lg
+            $cc = Convert-extra_data -leaf $lg
 
 
             foreach($san in $cc.DnsNameList.Unicode)
