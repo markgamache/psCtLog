@@ -1,7 +1,7 @@
 function Parse-Log([object] $logBase, [string[]] $domainLIst)
 {
     
-    
+    $ProgressPreference = 'SilentlyContinue'    
 
     while($true)
     {
@@ -25,7 +25,7 @@ function Parse-Log([object] $logBase, [string[]] $domainLIst)
 
                         $uped = $true
                     }
-                    Write-Host "" -NoNewline
+                    #Write-Host "" -NoNewline
                 }
 
                 if($uped)
@@ -42,5 +42,5 @@ function Parse-Log([object] $logBase, [string[]] $domainLIst)
     }
 
 
-    Write-Host "" -NoNewline
+    #Write-Host "" -NoNewline
 }

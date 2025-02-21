@@ -1,4 +1,4 @@
-function Decode-extra_data($leaf)
+function Decode-extra_data($leaf, [bool] $fullCert)
 {
     $certchain = [System.Convert]::FromBase64String($leaf.extra_data)
 
@@ -27,10 +27,18 @@ function Decode-extra_data($leaf)
     }
     catch
     {
-        Write-Host "" -NoNewline
+        #Write-Host "" -NoNewline
         $certchain[$($certStart + 2)..$($certStart + 3)]
     }
 
-    return $cert
+    if($fullCert)
+    {
+
+        return $cert
+    }
+    else
+    {
+        return Format-Cert -certIn $cert 
+    }
 }
 
